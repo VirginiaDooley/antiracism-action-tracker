@@ -1,0 +1,89 @@
+body {
+  background-color: black;
+  min-height: 100vh;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+}
+
+.logo {
+  height: 20vmin;
+  pointer-events: none;
+}
+
+.container {
+  border: 1px dashed white;
+}
+
+.action-list {
+  color: white;
+  margin: 0 0 0 10px;
+  width: 25%;
+  border: 1px dashed green;
+}
+
+.action {
+  border: 1px dashed red;
+  margin: 1rem 0;
+  color: white;
+}
+
+.action-is-completed .checkbox {
+  color: red;
+  background: #fff;
+}
+
+.action-is-completed input {
+  text-decoration: line-through;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 10px;
+  transition: background-color .2s ease-in-out;
+  border: 1px solid #fff;
+}
+
+.checkbox:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0);
+}
+
+.checkbox-checked {
+  color: #000;
+  background: #fff;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  line-height: 2rem;
+  width: 500px;
+}
+
+input {
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 1.4rem;
+  outline: none;
+  width: 15%;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
