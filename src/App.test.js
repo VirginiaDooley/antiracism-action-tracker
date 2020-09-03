@@ -7,3 +7,11 @@ test('renders learn react link', () => {
   const linkElement = getByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();
 });
+
+test('fetches action data with Google Sheets API', () => {
+
+});
+
+test('event listener updates state', () => {
+
+});
