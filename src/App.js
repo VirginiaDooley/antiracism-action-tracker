@@ -1,5 +1,5 @@
 import React from 'react';
-// import Actions from './Actions.js';
+import ActionList from './ActionList.js';
 import './index.js';
 
 class App extends React.Component {
@@ -28,6 +28,7 @@ class App extends React.Component {
   render() {
     return (
         <ul className="uk-list">
+        <ActionList/>
           {this.state.actions.map((action, index) =>
             <li key={index.toString()}>
               <div className="uk-card uk-card-secondary uk-card-body uk-width-1-2@m">
