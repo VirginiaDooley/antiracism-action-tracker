@@ -58,7 +58,7 @@ const TOKEN_PATH = 'token.json';
    * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
    */
 
-   /**
+   /*
    * Create an OAuth2 client with the given credentials, and then execute the
    * given callback function.
    * @param {Object} credentials The authorization client credentials.
@@ -89,10 +89,9 @@ app.get('/', (req, res) => {
   function listActions(auth) {
     const sheets = google.sheets({version: 'v4', auth});
     sheets.spreadsheets.values.get({
-      spreadsheetId: '1HzqdR66JwQVAFegsVjtjwtc68lOld7c3kB4r589w5-4',
-      range: 'LevelOne!A1:Z100'
-
-    }, (err, response, sheets)=> {
+      spreadsheetId: '12P_645m0s35FrjLJc4KRLSygaPloV0zfqOnsQLkCk4w',
+      range: 'LevelOne!A1:Z100',
+    }, (err, response)=> {
       if (err) return console.log('The API returned an error: ' + err);
       
       // (3) Setting data for daily tracking
