@@ -1,37 +1,39 @@
-import React from 'react';
-import ActionList from './ActionList.js';
-import './index.js';
+import React, { useState, useEffect } from 'react';
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      loading: "fetching actions...",
-      actions: []
-    }
-  }
-  
-  componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ actions: res.actions }))
-      .catch(err => console.log(err))
-  }
+function App() {
+  const [ actions, setActions ] = useState([])
 
-  callApi = async () => {
+  const getActions = async () => {
     const response = await fetch('http://localhost:1234');
-    const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
-    console.log("this is:", body)
-    return body;
+    const data = await response.json();
+    return data;
   };
 
-  render() {
-    return (
-        <ul className="uk-list">
-          <ActionList actions={this.state.actions}/>
-        </ul>
-    );
-  }
+  useEffect(() => {
+    getActions() 
+      .then(data => {
+        setActions(data.actions)
+      })
+  }, [])
+
+  return (
+    <div className="uk-list">
+      <ul>
+       {actions.map(item => 
+        <li key={item.Title}>
+          <div className="uk-card uk-card-secondary uk-card-body uk-width-1-2@m">
+            <div className="uk-card-badge uk-label">{item.badge}</div>
+            <p className="uk-card-title">Action: {item.Title}</p>
+            <a href="{item.Url}" className="uk-link-muted">{item.Url_title}</a>
+            <p>Date added: {item.date_added}</p>
+            <p>Deadline: {item.deadline}</p>
+            <p id="status">Complete?: {item.Status}</p>
+            <button className="uk-button uk-button-primary">COMPLETE</button>
+          </div>
+        </li>)}
+      </ul>
+    </div>
+  )
 }
 
 export default App;
